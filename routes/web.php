@@ -12,7 +12,31 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// 1- write in route
+Route::get('/hello', function () {
+    return 'Hello World';
+});
+// 2- call view in route
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
+});
+// 3- call controll function
+Route::get('/', [\App\Http\Controllers\HomeController::class,'Index'])->name( name: 'home');
+
+// 4- route > controll > view
+Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name( name: 'test');
+
+// 5- route > post
+
+Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name( name: 'test');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
