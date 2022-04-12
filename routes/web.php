@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +42,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//*************** admin panel routes ************
+
+// 3- call controll function
+Route::get('/admin', [AdminHomeController::class,'Index'])->name( name: 'admin');
