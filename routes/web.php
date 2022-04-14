@@ -43,7 +43,10 @@ Route::middleware([
     })->name('dashboard');
 });
 
-//*************** admin panel routes ************
-
-// 3- call controll function
+//*************** admin panel routes ***************
 Route::get('/admin', [AdminHomeController::class,'Index'])->name( name: 'admin');
+//*************** admin Caregory routes ************
+Route::get('/admin/category', [\App\Http\Controllers\Admin\CategoryController::class,'index'])->name( name: 'admin_category');
+Route::get('/admin/category/create', [\App\Http\Controllers\Admin\CategoryController::class,'create'])->name( name: 'admin_category_create');
+Route::Post('/admin/category/store', [\App\Http\Controllers\Admin\CategoryController::class,'store'])->name( name: 'admin_category_store');
+
