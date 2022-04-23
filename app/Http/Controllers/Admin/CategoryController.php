@@ -11,14 +11,16 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application
+     * \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         //
-        return view(view: 'admin.category.index');
+        $data= Category::all();
+        return view(  'admin.category.index',[ "data" => $data ]);
     }
-
+//[ ]
     /**
      * Show the form for creating a new resource.
      *
@@ -38,14 +40,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        echo $request;
-        // $data= new Category();
-        // $data->parent_id = 0;
-        // $data->Title = $request->Title;
-        //  $data->Description = $request->Description;
-        //  $data->KeyWords = $request->KeyWords;
-        //  $data->Status = $request->Status;
-        //  $data->save();
+
+       // echo $request;
+
+        $data= new category();
+        $data->parent_id = 0;
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->keywords = $request->keywords;
+        $data->status = $request->status;
+        $data->save();
+        return redirect(to:'admin/category');
+
+
 
     }
 

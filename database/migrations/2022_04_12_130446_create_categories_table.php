@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+{
+
+}
+
 return new class extends Migration
 {
     /**
@@ -15,12 +20,12 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(column: "parent_id");
+            $table->foreignId(column: "parent_id")->nullable();
             $table->string(column: "title");
-            $table->string(column: "keywords")->nullable();
             $table->string(column: "description")->nullable();
+            $table->string(column: "keywords")->nullable();
             $table->string(column: "image")->nullable();
-            $table->string(column: "status");
+            $table->string(column: "status",length: 6)->nullable();
 
             $table->timestamps();
         });
