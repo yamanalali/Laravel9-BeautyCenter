@@ -29,9 +29,8 @@
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                January 2018
-                            </a>
+                            <a class="btn btn-outline-primary" href="/admin/category/create/" role="button" >Add Category</a>
+
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#">Export List</a>
                                 <a class="dropdown-item" href="#">Policies</a>
@@ -45,11 +44,7 @@
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
                     <div class="pull-left">
-                        <h4 class="text-blue h4">Basic Table</h4>
-                        <p>Add class <code>.table</code></p>
-                    </div>
-                    <div class="pull-right">
-                        <a href="#basic-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+                        <h4 class="text-blue h4">Categories</h4>
                     </div>
                 </div>
                 <table class="table">
@@ -75,9 +70,9 @@
                         <td>{{$rs->keywords}}</td>
                         <td>{{$rs->image}}</td>
                         <td>{{$rs->status}}</td>
-                        <td><a href="/admin/category/edit{{$rs->id}}" class="btn btn-danger">Edit </td> </td>
-                        <td><a href="/admin/category/edit{{$rs->id}}"class="btn btn-success">Delete </a> </td>
-                        <td><a href="/admin/category/edit{{$rs->id}}"class="btn btn-warning">Show </a> </td>
+                        <td><a href="/admin/category/edit/{{$rs->id}}" class="btn btn-danger">Edit</td> </td>
+                        <td><a href="/admin/category/destroy/{{$rs->id}}"class="btn btn-success">Delete</a> </td>
+                        <td><a href="/admin/category/show/{{$rs->id}}"class="btn btn-warning">Show</a> </td>
                     </tr>
                     @endforeach
                     </tbody>

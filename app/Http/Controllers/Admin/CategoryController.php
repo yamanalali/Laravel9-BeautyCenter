@@ -62,9 +62,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category, $id)
     {
         //
+       // echo 'Show area: ', $id;
+        $data = Category::find($id);
+        return view(  'admin.category.show',[ "data" => $data ]);
     }
 
     /**
@@ -73,9 +76,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category,$id)
     {
         //
+        $data = Category::find($id);
+        return view(  'admin.category.edit',[ "data" => $data ]);
+
     }
 
     /**
@@ -85,9 +91,18 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category,$id)
     {
         //
+
+        $data= Category::find($id);
+        $data->parent_id = 0;
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->keywords = $request->keywords;
+        $data->status = $request->status;
+        $data->save();
+        return redirect(to:'admin/category');
     }
 
     /**
@@ -96,8 +111,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
         //
+        $data= Category::find($id);
+        $data->delete();
+        return redirect(to:'admin/category');
     }
 }

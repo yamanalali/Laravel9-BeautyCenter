@@ -2,7 +2,7 @@
 
 @extends('layouts.adminbase')
 
-@section('title', 'BeautyCenter - Add Category')
+@section('title', 'Edit Category:' .$data->title)
 
 
 @section('content')
@@ -18,28 +18,28 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h1 style="color:DodgerBlue;">> Add Category</h1>
+                            <h1 style="color:DodgerBlue;">> Edit Category: {{$data->title}}</h1>
                             <br>
                         </div>
                         <!--  Forms Start -->
-                        <form action="/admin/category/store" method="post" enctype="multipart/form-data">
+                        <form action="/admin/category/update/{{$data->id}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="title" class="col-sm-12 col-md-2 col-form-label">Text</label>
                                 <div class="col-sm-12 col-md-10">
-                                    <input class="form-control" type="text" name="title" >
+                                    <input class="form-control" type="text" name="title" value="{{$data->title}}" placeholder="title">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="description" class="col-sm-12 col-md-2 col-form-label">description</label>
                                 <div class="col-sm-12 col-md-10">
-                                    <input class="form-control" type="text" name="description" >
+                                    <input class="form-control" type="text" name="description" value="{{$data->description}}"description">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="keywords" class="col-sm-12 col-md-2 col-form-label">keywords</label>
                                 <div class="col-sm-12 col-md-10">
-                                    <input class="form-control" type="text" name="keywords" >
+                                    <input class="form-control" type="text" name="keywords" value="{{$data->keywords}}"keywords">
                                 </div>
                             </div>
 
@@ -51,12 +51,14 @@
                                 <label for="status" class="col-sm-12 col-md-2 col-form-label">status</label>
                                 <div class="col-sm-12 col-md-10">
                                     <select class="custom-select col-12">
+                                        <option selected>{{$data->status}}</option>
                                         <option value="1">true</option>
                                         <option value="2">false</option>
                                     </select>
                                 </div>
                             </div>
                             <div>
+
                                 <button type="submit" class="btn btn-primary">Edit Data</button>
 
                             </div>

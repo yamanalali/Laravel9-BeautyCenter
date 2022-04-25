@@ -4,6 +4,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +47,13 @@ Route::middleware([
 //*************** admin panel routes ***************
 Route::get('/admin', [AdminHomeController::class,'Index'])->name( name: 'admin');
 //*************** admin Caregory routes ************
-Route::get('/admin/category', [\App\Http\Controllers\Admin\CategoryController::class,'index'])->name( name: 'admin_category');
-Route::get('/admin/category/create', [\App\Http\Controllers\Admin\CategoryController::class,'create'])->name( name: 'admin_category_create');
-Route::Post('/admin/category/store', [\App\Http\Controllers\Admin\CategoryController::class,'store'])->name( name: 'admin_category_store');
+Route::get('/admin/category', [AdminCategoryController::class,'index'])->name( name: 'admin_category');
+Route::get('/admin/category/create', [AdminCategoryController::class,'create'])->name( name: 'admin_category_create');
+Route::Post('/admin/category/store', [AdminCategoryController::class,'store'])->name( name: 'admin_category_store');
+Route::get('/admin/category/edit/{id}', [AdminCategoryController::class,'edit'])->name( name: 'admin_category_edit');
+Route::post('/admin/category/update/{id}', [AdminCategoryController::class,'update'])->name( name: 'admin_category_update');
+Route::get('/admin/category/destroy/{id}', [AdminCategoryController::class,'destroy'])->name( name: 'admin_category_destroy');
+Route::get('/admin/category/show/{id}', [AdminCategoryController::class,'show'])->name( name: 'admin_category_show');
+
+
 
