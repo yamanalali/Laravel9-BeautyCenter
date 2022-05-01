@@ -22,14 +22,14 @@
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">blank</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-outline-primary" href="/admin/category/create/" role="button" >Add Category</a>
+                            <a class="btn btn-outline-primary" href="{{route('admin.category.create')}}" role="button" >Add Category</a>
 
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#">Export List</a>
@@ -51,9 +51,8 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Parent</th>
                         <th scope="col">title</th>
-                        <th scope="col">description</th>
-                        <th scope="col">keywords</th>
                         <th scope="col">image</th>
                         <th scope="col">status</th>
                         <th style="width: 40px">Edit</th>
@@ -65,14 +64,17 @@
                     @foreach($data as $rs)
                     <tr>
                         <td>{{$rs->id}}</td>
+                        <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</td>
                         <td>{{$rs->title}}</td>
-                        <td>{{$rs->description}}</td>
-                        <td>{{$rs->keywords}}</td>
-                        <td>{{$rs->image}}</td>
+                        <td>
+                        @IF   ($rs->image)
+                            <img src="{{Storage::URL($rs->image)}}" style="height: 40px">
+                            @endif
+                        </td>
                         <td>{{$rs->status}}</td>
-                        <td><a href="/admin/category/edit/{{$rs->id}}" class="btn btn-danger">Edit</td> </td>
-                        <td><a href="/admin/category/destroy/{{$rs->id}}"class="btn btn-success">Delete</a> </td>
-                        <td><a href="/admin/category/show/{{$rs->id}}"class="btn btn-warning">Show</a> </td>
+                        <td><a href={{route('admin.category.edit',['id'=>$rs->id ])}} class="btn btn-danger" >Edit</td>
+                        <td><a href={{route('admin.category.destroy',['id'=>$rs->id ])}} class="btn btn-success" >Delete </a> </td>
+                        <td><a href={{route('admin.category.show',['id'=>$rs->id ])}} class="btn btn-warning" >Show</a> </td>
                     </tr>
                     @endforeach
                     </tbody>
@@ -100,4 +102,7 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 

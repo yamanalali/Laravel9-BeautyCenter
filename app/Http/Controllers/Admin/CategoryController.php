@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -14,6 +15,24 @@ class CategoryController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application
      * \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+
+        protected $appends = [
+            'getParentsTree'
+        ];
+            public static function getParentsTree($category, $title)
+            {
+                if ($category->parent_id == 0)
+                {
+                        return $title;
+                }
+
+                $parent = Category::find($category->parent_id);
+                $title = $parent->title . ' > ' . $title;
+                return CategoryController::getParentsTree($parent, $title);
+            }
+
+
+
     public function index()
     {
         //
@@ -29,7 +48,10 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view(view: 'admin.category.create');
+        $data=Category::all();
+        return view ( 'admin.category.create', [
+            "data" => $data
+        ]);
     }
 
     /**
@@ -44,10 +66,13 @@ class CategoryController extends Controller
        // echo $request;
 
         $data= new category();
-        $data->parent_id = 0;
+        $data->parent_id = $request->parent_id;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->keywords = $request->keywords;
+        if ($request->file('image')){
+           $data->image=  $request->file('image')->store('images');
+        }
         $data->status = $request->status;
         $data->save();
         return redirect(to:'admin/category');
@@ -80,7 +105,9 @@ class CategoryController extends Controller
     {
         //
         $data = Category::find($id);
-        return view(  'admin.category.edit',[ "data" => $data ]);
+        $datalist = Category::all();
+        return view(  'admin.category.edit',[ 'data' => $data, 'datalist' => $datalist]);
+
 
     }
 
@@ -96,10 +123,13 @@ class CategoryController extends Controller
         //
 
         $data= Category::find($id);
-        $data->parent_id = 0;
+        $data->parent_id = $request->parent_id;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->keywords = $request->keywords;
+        if ($request->file('image')){
+            $data->image=  $request->file('image')->store('images');
+        }
         $data->status = $request->status;
         $data->save();
         return redirect(to:'admin/category');
@@ -114,8 +144,11 @@ class CategoryController extends Controller
     public function destroy(Category $category, $id)
     {
         //
+        $datalist = Category::all();
         $data= Category::find($id);
+        Storage::delete($data->image);
         $data->delete();
         return redirect(to:'admin/category');
     }
 }
+

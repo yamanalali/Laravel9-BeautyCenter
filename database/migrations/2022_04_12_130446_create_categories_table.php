@@ -19,14 +19,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId(column: "parent_id")->nullable();
+
+            $table->bigIncrements('id');
+            $table->foreignId(column: "parent_id");
             $table->string(column: "title");
             $table->string(column: "description")->nullable();
             $table->string(column: "keywords")->nullable();
             $table->string(column: "image")->nullable();
-            $table->string(column: "status",length: 6)->nullable();
-
+            $table->string(column: "status");
             $table->timestamps();
         });
     }

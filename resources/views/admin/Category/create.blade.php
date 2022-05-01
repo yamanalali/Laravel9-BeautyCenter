@@ -16,58 +16,72 @@
         <div class="min-height-200px">
             <div class="page-header">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-12 col-sm-12">
                         <div class="title">
                             <h1 style="color:DodgerBlue;">> Add Category</h1>
                             <br>
                         </div>
                         <!--  Forms Start -->
-                        <form action="/admin/category/store" method="post" enctype="multipart/form-data">
+                        <form action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
+
+                      <div  div class="form-group">
+                          <label>Parent Category</label>
+                          <select class="form-group select-role" name="parent_id">
+                      <option value="0" selected="selected">Main Category</option>
+                                        @foreach($data as $rs)
+                                   <option value="{{ $rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
+                                            @endforeach
+                                    </select>
+</div>
                             <div class="form-group row">
-                                <label for="title" class="col-sm-12 col-md-2 col-form-label">Text</label>
-                                <div class="col-sm-12 col-md-10">
+                                <label for="title" class="col-sm-12 col-md-12 col-form-label"><b>Text</b></label>
+                                <div class="col-sm-12 col-md-12">
                                     <input class="form-control" type="text" name="title" >
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="description" class="col-sm-12 col-md-2 col-form-label">description</label>
-                                <div class="col-sm-12 col-md-10">
+                                <label for="description" class="col-sm-12 col-md-12 col-form-label"><b>description</b></label>
+                                <div class="col-sm-12 col-md-12">
                                     <input class="form-control" type="text" name="description" >
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="keywords" class="col-sm-12 col-md-2 col-form-label">keywords</label>
-                                <div class="col-sm-12 col-md-10">
+                                <label for="keywords" class="col-sm-12 col-md-12 col-form-label"><b>keywords</b></label>
+                                <div class="col-sm-12 col-md-12">
                                     <input class="form-control" type="text" name="keywords" >
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label> images file input</label>
-                                <input type="file" class="form-control-file form-control height-auto">
+                            <div
+
                             </div>
-                            <div class="form-group row">
-                                <label for="status" class="col-sm-12 col-md-2 col-form-label">status</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <select class="custom-select col-12">
-                                        <option value="1">true</option>
-                                        <option value="2">false</option>
-                                    </select>
+                                <div class="form-group">
+                                    <label>Custom file input</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="image" id="image">
+                                        <label class="custom-file-label"><b>Choose file</b></label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-primary">Edit Data</button>
+                             <div
 
-                            </div>
-                        </form>
+                                 <label for="status" class="col-sm-12 col-md-12"><b>Status</b></label>
+                                 <select id="status" name="status" class="form-control" placeholder="status" required>
+                                     <option>True</option>
+                                     <option>False</option>
+                                 </select>
 
-</form>
+                                 <button type="submit" class="btn btn-primary">Submit Data</button>
 
-</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- horizontal Basic Forms End -->
+                             </div>
+                    </div>
+                         </form>
+
+ </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                         <!-- horizontal Basic Forms End -->
 
 
