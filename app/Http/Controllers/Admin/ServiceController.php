@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Http\Controllers\Admin\ServiceControllerController;
+use App\Models\service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +20,16 @@ class CategoryController extends Controller
         protected $appends = [
             'getParentsTree'
         ];
-            public static function getParentsTree($category, $title)
+            public static function getParentsTree($service, $title)
             {
-                if ($category->parent_id == 0)
+                if ($service->parent_id == 0)
                 {
                         return $title;
                 }
 
-                $parent = Category::find($category->parent_id);
+                $parent = service::find($service->parent_id);
                 $title = $parent->title . ' > ' . $title;
-                return CategoryController::getParentsTree($parent, $title);
+                return serviceController::getParentsTree($parent, $title);
             }
 
 
@@ -36,8 +37,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $data= Category::all();
-        return view(  'admin.category.index',[ "data" => $data ]);
+        $data= service::all();
+        return view(  'admin.service.index',[ "data" => $data ]);
     }
 //[ ]
     /**
@@ -48,8 +49,8 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $data=Category::all();
-        return view ( 'admin.category.create', [
+        $data= service::all();
+        return view ( 'admin.service.create', [
             "data" => $data
         ]);
     }
@@ -65,17 +66,23 @@ class CategoryController extends Controller
 
        // echo $request;
 
-        $data= new category();
-        $data->parent_id = $request->parent_id;
+        $data= new service();
+        $data->category_id = $request->category_id;
+        $data->user_id = 0;  // $request->user_id;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->keywords = $request->keywords;
+        $data->detail = $request->detail;
+        $data->price = $request->price;
+        $data->type = $request->type;
+        $data->sessions = $request->sessions;
+        $data->tax = $request->tax;
         if ($request->file('image')){
            $data->image=  $request->file('image')->store('images');
         }
         $data->status = $request->status;
         $data->save();
-        return redirect(to:'admin/category');
+        return redirect(to:'admin/service');
 
 
 
@@ -84,29 +91,29 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category, $id)
+    public function show(service $service, $id)
     {
         //
        // echo 'Show area: ', $id;
-        $data = Category::find($id);
-        return view(  'admin.category.show',[ "data" => $data ]);
+        $data = service::find($id);
+        return view(  'admin.service.show',[ "data" => $data ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category,$id)
+    public function edit(service $service,$id)
     {
         //
-        $data = Category::find($id);
-        $datalist = Category::all();
-        return view(  'admin.category.edit',[ 'data' => $data, 'datalist' => $datalist]);
+        $data = service::find($id);
+        $datalist = service::all();
+        return view(  'admin.service.edit',[ 'data' => $data, 'datalist' => $datalist]);
 
 
     }
@@ -115,40 +122,48 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category,$id)
+    public function update(Request $request, service $service,$id)
     {
         //
 
-        $data= Category::find($id);
-        $data->parent_id = $request->parent_id;
-        $data->title = $request->title;
+        $data= service::find($id);
+        $data->category_id = $request->category_id;
+        $data->user_id = 0;  // $request->user_id;
         $data->description = $request->description;
         $data->keywords = $request->keywords;
+        $data->detail = $request->detail;
+        $data->price = $request->price;
+        $data->type = $request->type;
+        $data->sessions = $request->sessions;
+        $data->tax = $request->tax;
         if ($request->file('image')){
             $data->image=  $request->file('image')->store('images');
         }
         $data->status = $request->status;
         $data->save();
-        return redirect(to:'admin/category');
+        return redirect(to:'admin/service');
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category, $id)
+    public function destroy(service $service, $id)
     {
         //
-        $data= Category::find($id);
+        $datalist = service::all();
+        $data= service::find($id);
         if ($data->image && Storage::disk('public')->exists($data->image))
-            Storage::delete($data->image);
+        Storage::delete($data->image);
         $data->delete();
-        return redirect(to:'admin/category');
+        return redirect(to:'admin/service');
     }
 }
 

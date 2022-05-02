@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ServiceControllerController as ServiceControllerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +48,7 @@ Route::middleware([
 //*************** admin panel routes ***************
 Route::prefix( 'admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class,'index'])->name('index');
-//*************** admin Caregory routes **********
+//*************** admin Category routes **********
     Route::prefix( '/category')->name('category.')->controller(AdminCategoryController::class)->group(function () {
       Route::get('/', action:'index')->name( name: 'index');
       Route::get('/create', action:'create')->name( name: 'create');
@@ -59,4 +60,17 @@ Route::prefix( 'admin')->name('admin.')->group(function () {
 
 
 });
+    //*************** admin Service routes **********
+    Route::prefix( '/service')->name('service.')->controller(\App\Http\Controllers\Admin\ServiceController::class)->group(function () {
+        Route::get('/', action:'index')->name( name: 'index');
+        Route::get('/create', action:'create')->name( name: 'create');
+        Route::Post('/store', action:'store')->name( name: 'store');
+        Route::get('/edit/{id}', action:'edit')->name( name: 'edit');
+        Route::post('/update/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
+        Route::get('/show/{id}', action:'show')->name( name: 'show');
+
+
+    });
 });
+

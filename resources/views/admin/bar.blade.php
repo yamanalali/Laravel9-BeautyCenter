@@ -27,6 +27,9 @@
                 <a href="/admin/category/" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-calendar1"></span><span class="mtext">Categories</span>
                 </a>
+                <a href="/admin/service/" class="dropdown-toggle no-arrow">
+                    <span class="micon dw dw-house-11"></span><span class="mtext">Services</span>
+                </a>
                 <a href="/admin/comments/" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-chat"></span><span class="mtext">Comments</span>
                 </a>
