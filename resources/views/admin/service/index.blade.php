@@ -2,7 +2,7 @@
 
 @extends('layouts.adminbase')
 
-@section('title', 'BeautyCenter - Category List')
+@section('title', 'BeautyCenter - Service List')
 
 
 @section('content')
@@ -44,7 +44,7 @@
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
                     <div class="pull-left">
-                        <h4 class="text-blue h4">Categories</h4>
+                        <h4 class="text-blue h4">Services</h4>
                     </div>
                 </div>
                 <table class="table">
@@ -66,7 +66,7 @@
                     @foreach($data as $rs)
                     <tr>
                         <td>{{$rs->id}}</td>
-                        <td>{{\App\Http\Controllers\Admin\ServiceController::getParentsTree($rs, $rs->title)}}</td>
+                        <td>  {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title)}}</td>
                         <td>{{$rs->title}}</td>
                         <td>{{$rs->price}}</td>
                         <td>{{$rs->type}}</td>

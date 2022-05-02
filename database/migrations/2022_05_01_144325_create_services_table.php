@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string(column: "type")->nullable();
             $table->string(column: "sessions")->nullable();
             $table->string(column: "tax")->nullable();
-
             $table->string(column: "status")->default('false');
             $table->timestamps();
         });

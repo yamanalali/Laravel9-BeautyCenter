@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\ServiceControllerController;
+use App\Models\Category;
 use App\Models\service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -49,7 +50,7 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        $data= service::all();
+        $data= Category::all();
         return view ( 'admin.service.create', [
             "data" => $data
         ]);
@@ -112,7 +113,7 @@ class ServiceController extends Controller
     {
         //
         $data = service::find($id);
-        $datalist = service::all();
+        $datalist = Category::all();
         return view(  'admin.service.edit',[ 'data' => $data, 'datalist' => $datalist]);
 
 

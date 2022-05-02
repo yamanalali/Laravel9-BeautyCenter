@@ -27,8 +27,8 @@ class CategoryController extends Controller
                 }
 
                 $parent = Category::find($category->parent_id);
-                $title = $parent->title . ' > ' . $title;
-                return CategoryController::getParentsTree($parent, $title);
+                $title = $parent->title . ' | ' . $title;
+                return CategoryController::getParentsTree($parent , $title);
             }
 
 

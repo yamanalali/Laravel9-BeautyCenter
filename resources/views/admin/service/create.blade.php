@@ -26,8 +26,8 @@
                             @csrf
 
                       <div  div class="form-group">
-                          <label>Select Service</label>
-                          <select class="form-group select-role" name="category_id">
+                          <label>Parent Category</label>
+                          <select class="form-group select-role" name="category_id" style="width:100%;">
                                         @foreach($data as $rs)
                                    <option value="{{ $rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
                                             @endforeach
@@ -54,7 +54,7 @@
                             <div class="form-group row">
                                 <label for="price" class="col-sm-12 col-md-12 col-form-label"><b>price</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="price" >
+                                    <input class="form-control" type="number" name="price" >
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -66,13 +66,13 @@
                             <div class="form-group row">
                                 <label for="sessions" class="col-sm-12 col-md-12 col-form-label"><b>sessions</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="sessions" >
+                                    <input class="form-control" type="number" name="sessions" >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="tax" class="col-sm-12 col-md-12 col-form-label"><b>tax %</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="tax" >
+                                    <input class="form-control" type="number" name="tax" >
                                 </div>
                             </div>
                             <div class="form-group">
