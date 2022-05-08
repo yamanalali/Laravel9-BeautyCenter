@@ -41,19 +41,6 @@
                                     <input class="form-control" type="text" name="title" value="{{$data->title}}" placeholder="title">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="description" class="col-sm-12 col-md-12 col-form-label"><b>description</b></label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control" type="text" name="description" value="{{$data->description}}"description">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="keywords" class="col-sm-12 col-md-12 col-form-label"><b>keywords</b></label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control" type="text" name="keywords" value="{{$data->keywords}}"keywords">
-                                </div>
-                            </div>
-
 
                             <div class="form-group">
                                 <label><b>Custom file input</b></label>
@@ -64,13 +51,7 @@
                             </div>
                             <div
                             </div>
-                             <div>
-                                <label for="status"  class="col-sm-12 col-md-12"><b>Status</b></label>
-                                <select id="status" name="status" class="form-control" placeholder="status" required>
-                                    <option selected>{{$data->status}}</option>
-                                    <option>True</option>
-                                    <option>False</option>
-                                </select>
+
 
                                 <button type="submit" class="btn btn-primary">Edit Data</button>
 

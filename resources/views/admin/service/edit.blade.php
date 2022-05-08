@@ -28,7 +28,7 @@
 
                             <div  div class="form-group">
                                 <label>Parent Category</label>
-                                <select class="form-group select-role" name="category_id" style="width:100%;">
+                                <select class="selectpicker form-control" data-style="btn-outline-primary" data-size="5" tabindex="-98" name="category_id" style="width:100%;">
                                 @foreach($datalist as $rs)
                                     <option value="{{ $rs->id}}" @if($rs->id == $data->category_id)  selected="selected" @endif >
                                     {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
@@ -55,6 +55,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="price" class="col-sm-12 col-md-12 col-form-label"><b>price</b></label>
+
                                 <div class="col-sm-12 col-md-12">
                                     <input class="form-control" type="text" name="price" >
                                 </div>
@@ -65,6 +66,8 @@
                                     <input class="form-control" type="text" name="type" value="{{$data->type}}"type">
                                 </div>
                             </div>
+
+
                             <div class="form-group row">
                                 <label for="sessions" class="col-sm-12 col-md-12 col-form-label"><b>sessions</b></label>
                                 <div class="col-sm-12 col-md-12">

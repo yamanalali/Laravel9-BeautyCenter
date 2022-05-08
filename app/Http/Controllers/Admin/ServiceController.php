@@ -18,20 +18,6 @@ class ServiceController extends Controller
      * \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
 
-        protected $appends = [
-            'getParentsTree'
-        ];
-            public static function getParentsTree($service, $title)
-            {
-                if ($service->parent_id == 0)
-                {
-                        return $title;
-                }
-
-                $parent = service::find($service->parent_id);
-                $title = $parent->title . ' > ' . $title;
-                return serviceController::getParentsTree($parent, $title);
-            }
 
 
 
@@ -67,7 +53,7 @@ class ServiceController extends Controller
 
        // echo $request;
 
-        $data= new service();
+        $data= new Service();
         $data->category_id = $request->category_id;
         $data->user_id = 0;  // $request->user_id;
         $data->title = $request->title;
@@ -130,7 +116,7 @@ class ServiceController extends Controller
     {
         //
 
-        $data= service::find($id);
+        $data= Service::find($id);
         $data->category_id = $request->category_id;
         $data->user_id = 0;  // $request->user_id;
         $data->description = $request->description;

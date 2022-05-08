@@ -72,5 +72,13 @@ Route::prefix( 'admin')->name('admin.')->group(function () {
 
 
     });
+    //*************** admin Service Images routs **********
+    Route::prefix( '/image')->name('image.')->controller(\App\Http\Controllers\Admin\ImageController::class)->group(function () {
+        Route::get('/{sid}', action:'index')->name( name: 'index');
+        Route::Post('/store/{sid}', action:'store')->name( name: 'store');
+        Route::post('/update/{sid}/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{sid}/{id}', action:'destroy')->name( name: 'destroy');
+
+    });
 });
 

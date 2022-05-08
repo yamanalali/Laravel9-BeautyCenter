@@ -40,6 +40,9 @@
 @section('sidebar')
     @include("home.bar")
 @show
+@section('slider')
+
+@show
 
 
     @yield('content')

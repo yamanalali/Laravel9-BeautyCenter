@@ -27,12 +27,14 @@
 
                       <div  div class="form-group">
                           <label>Parent Category</label>
-                          <select class="form-group select-role" name="category_id" style="width:100%;">
-                                        @foreach($data as $rs)
-                                   <option value="{{ $rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
-                                            @endforeach
+                          <select class="selectpicker form-control" data-style="btn-outline-primary"  name="category_id" style="width:100%;">
+                              @foreach($data as $rs)
+                                  <option value="{{ $rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
+                              @endforeach
                                     </select>
 </div>
+
+
                             <div class="form-group row">
                                 <label for="title" class="col-sm-12 col-md-12 col-form-label"><b>Text</b></label>
                                 <div class="col-sm-12 col-md-12">
