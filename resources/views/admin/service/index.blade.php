@@ -79,7 +79,7 @@
 
                         <td>
                             <a href='{{route('admin.image.index',['sid'=>$rs->id ])}}' onclick="return !window.open(this.href, '','top=50 left')">
-                                <img  src="{{asset("assets")}}admin\vendors\images\gallery.jpg" style="height: 40px">
+                                <img  src="{{asset("assets")}}\admin\vendors\images\download.png" style="height: 40px">
                         <td>{{$rs->status}}</td>
                         <td><a href={{route('admin.service.edit',['id'=>$rs->id ])}} class="btn btn-danger" >Edit</td>
                         <td><a href={{route('admin.service.destroy',['id'=>$rs->id ])}} class="btn btn-success" >Delete </a> </td>

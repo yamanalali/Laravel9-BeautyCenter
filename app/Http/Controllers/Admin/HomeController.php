@@ -11,10 +11,7 @@ class HomeController extends Controller
     //
     public function index ()
     {
-        $sliderdata = Service::limit(4);
-        return view(  'admin.index',[ "sliderdata" => $sliderdata ]);
-
-
+        return view( view: 'admin.index');
 
 
     }
