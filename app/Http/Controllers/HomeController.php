@@ -11,8 +11,13 @@ class HomeController extends Controller
      public function Index ()
 
    {
-       $sliderdata=Service::limit(10)->get();
-       return view( 'home.index',[ "sliderdata" => $sliderdata ]);
+       $sliderdata=Service::limit(3)->get();
+       $servicelist1=Service::limit(8)->get();
+
+       return view( 'home.index',[
+           "sliderdata" => $sliderdata ,
+           "servicelist1" => $servicelist1
+       ]);
 
 
    }

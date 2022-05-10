@@ -5,6 +5,7 @@
 @section('title', 'BeautyCenter - Category List')
 
 
+
 @section('content')
 
 

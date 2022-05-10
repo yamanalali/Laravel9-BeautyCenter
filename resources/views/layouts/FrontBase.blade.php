@@ -41,7 +41,7 @@
     @include("home.bar")
 @show
 @section('slider')
-
+    @include("home.slider")
 @show
 
 

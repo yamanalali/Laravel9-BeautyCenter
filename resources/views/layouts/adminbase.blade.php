@@ -42,6 +42,7 @@
 @show
 
 
+
 @yield('content')
 
 @include("admin.Footer")
