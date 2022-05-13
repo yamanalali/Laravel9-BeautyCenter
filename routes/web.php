@@ -35,6 +35,8 @@ Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name(
 
 Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name( name: 'test');
 
+Route::get('/service/{id}', [HomeController::class,'service'])->name( name: 'service');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

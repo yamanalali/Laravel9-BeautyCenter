@@ -324,8 +324,7 @@
     <!-- Team Start -->
     <div class="container mt-5 pt-5 pb-3">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-secondary mb-3">Team Member</h4>
-            <h1 class="display-4 m-0">Meet Our <span class="text-primary">Team Member</span></h1>
+            <h1 class="display-4 m-0">Services <span class="text-primary">We provide</span></h1>
         </div>
         <div class="row">
 
@@ -333,7 +332,8 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="{{Storage::URL($rs->image)}}" style="width: 360px; height: 270px">
+                    <a href="{{route('service',['id'=>$rs->id])}}">
+                    <img class="card-img-top"  src="{{Storage::URL($rs->image)}}" style="width: 360px; height: 270px" >
                     <div class="card-body text-center p-0">
                         <div class="team-text d-flex flex-column justify-content-center bg-light">
 
@@ -467,3 +467,4 @@
     <!-- Blog End -->
 
 @endsection
+

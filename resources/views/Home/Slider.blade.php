@@ -1,16 +1,16 @@
 
 
-
-
+@yield('slider')
 
 
 
 <!-- Carousel -->
+@foreach( $sliderdata as $rs )
+
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            @foreach( $sliderdata as $rs )
 
             <div class="carousel-item active">
                 <img class="w-100" src="{{Storage::URL($rs->image)}}" style="height: 600px;width: ">
@@ -21,7 +21,8 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+                @endforeach
+
     <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
         <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
             <span class="carousel-control-prev-icon mb-n2"></span>

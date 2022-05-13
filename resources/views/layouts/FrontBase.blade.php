@@ -37,17 +37,14 @@
 @include("home.Header")
 
 
-@section('sidebar')
-    @include("home.bar")
-@show
 @section('slider')
-    @include("home.slider")
 @show
 
 
-    @yield('content')
 
-@include("home.Footer")
+@yield('content')
+
+@include('home.Footer')
 @yield('foot')
 </body>
 </html>
