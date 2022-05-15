@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     //
+    public static function maincategory()
+    {
+
+    }
+
+
      public function Index()
 
    {
-       $sliderdata=Service::limit(3)->get();
+       $sliderdata=Service::limit(1)->get();
        $servicelist1=Service::limit(8)->get();
 
        return view( 'home.index',[

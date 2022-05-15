@@ -1,9 +1,9 @@
 /******* Bootstrap Theming ********/
 
-$primary: #ED6436;
-$secondary: #65C178;
-$light: #F2F2F4;
-$dark: #181818;
+$primary: #D19C97;
+$secondary: #EDF1FF;
+$light: #FFFFFF;
+$dark: #1C1C1C;
 
 $theme-colors: (
     "primary": $primary,
@@ -12,33 +12,39 @@ $theme-colors: (
     "dark": $dark,
 );
 
-$font-family-sans-serif: 'Nunito Sans', sans-serif;
+$font-family-sans-serif: 'Poppins', sans-serif;
 
-$headings-font-family: 'Nunito', sans-serif;
-
-$body-color: #777777;
+$body-color: #6F6F6F;
 
 $headings-color: $dark;
 
+$border-color: $secondary;
+
+$input-border-color: $secondary;
+
 $enable-responsive-font-sizes: true;
+
+$enable-rounded: false;
+
+$btn-focus-box-shadow: none;
+
+$btn-active-box-shadow: none;
+
+$input-btn-focus-box-shadow: none;
+
+$input-placeholder-color: #999999;
 
 @import "bootstrap/scss/bootstrap";
 
 
 /********** Custom CSS ************/
-h1,
-h2 {
-    font-weight: 800 !important;
+
+.font-weight-medium {
+    font-weight: 500;
 }
 
-h3,
-h4 {
-    font-weight: 700 !important;
-}
-
-h5,
-h6 {
-    font-weight: 600 !important;
+.font-weight-semi-bold {
+    font-weight: 600;
 }
 
 [class^=flaticon-]:before,
@@ -47,6 +53,103 @@ h6 {
 [class*=" flaticon-"]:after {
     font-size: inherit;
     margin-left: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    padding: 20px 10px;
+    color: $dark;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: $primary;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link  {
+        padding: 5px 0px;
+    }
+}
+
+.navbar-vertical.navbar-light .navbar-nav .nav-link {
+    padding: 8px 30px;
+    border-bottom: 1px solid $secondary;
+}
+
+#header-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 1;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: $dark;
+}
+
+.section-title span {
+    position: relative;
+    background: #ffffff;
+    z-index: 1;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    margin-top: -1px;
+    background: $dark;
+}
+
+.offer img {
+    position: absolute;
+    max-width: 50%;
+    max-height: 90%;
+    bottom: 0;
+}
+
+.offer .text-md-right img {
+    left: 0;
+}
+
+.offer .text-md-left img {
+    right: 0;
+}
+
+.cat-item .cat-img img,
+.product-item .product-img img  {
+    transition: .5s;
+}
+
+.cat-item:hover .cat-img img,
+.product-item:hover .product-img img {
+    transform: scale(1.2);
+}
+
+.product-item .btn:hover {
+    color: $primary !important;
+}
+
+.contact-form .help-block ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 .back-to-top {
@@ -77,88 +180,4 @@ h6 {
     100% {
         transform: translateY(-15px);
     }
-}
-
-.navbar-dark .navbar-nav .nav-link {
-    padding: 30px 20px;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: $light;
-    outline: none;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link.active {
-    color: $dark;
-    background: $primary;
-}
-
-@media (max-width: 991.98px) {
-    .navbar-dark .navbar-nav .nav-link  {
-        padding: 10px 15px;
-    }
-}
-
-.carousel-caption {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, .3);
-    z-index: 1;
-}
-
-.team img {
-    position: relative;
-    z-index: 1;
-}
-
-.team .team-text {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    bottom: 0px;
-    left: 0;
-    transition: .5s;
-}
-
-.team:hover .team-text {
-    bottom: 100px;
-}
-
-.team .team-social {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    bottom: -100px;
-    left: 0;
-    transition: .5s;
-}
-
-.team:hover .team-social {
-    bottom: 0;
-}
-
-.testimonial-carousel .owl-dots {
-    margin-top: 25px;
-    text-align: center;
-}
-
-.testimonial-carousel .owl-dot {
-    display: inline-block;
-    margin: 0 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 10px;
-    background: #dddddd;
-}
-
-.testimonial-carousel .owl-dot.active {
-    background: $primary;
-}
-
-.contact-form .help-block ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
 }
