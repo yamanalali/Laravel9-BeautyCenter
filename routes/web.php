@@ -36,6 +36,8 @@ Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name(
 Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name( name: 'test');
 
 Route::get('/service/{id}', [HomeController::class,'service'])->name( name: 'service');
+Route::get('/categoryservices/{id}/{slug}', [HomeController::class,'categoryservices'])->name( name: 'categoryservices');
+
 
 Route::middleware([
     'auth:sanctum',

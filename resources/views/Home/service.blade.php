@@ -1,6 +1,6 @@
 @extends('layouts.FrontBase')
 
-@section('title',$data->id )
+@section('title', 'Services' )
 @section('content')
 
 

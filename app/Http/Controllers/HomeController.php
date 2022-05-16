@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -9,8 +10,9 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     //
-    public static function maincategory()
+    public static function maincategorylist()
     {
+        return Category::where('parent_id', '=', 0 )->with('children')->get();
 
     }
 
@@ -34,10 +36,23 @@ class HomeController extends Controller
 
         $data= Service::find($id);
         $images = DB::table('images')->where('service_id' , $id)->get();
-
         return view( 'home.service',[
             'data' => $data,
              'images' => $images
+
+        ]);
+
+
+    }
+    public function categoryservices($id)
+
+    {
+
+        $data= Service::find($id);
+        $images = DB::table('images')->where('service_id' , $id)->get();
+        return view( 'home.service',[
+            'data' => $data,
+            'images' => $images
 
         ]);
 
