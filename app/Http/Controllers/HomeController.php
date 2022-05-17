@@ -48,11 +48,11 @@ class HomeController extends Controller
 
     {
 
-        $data= Service::find($id);
-        $images = DB::table('images')->where('service_id' , $id)->get();
-        return view( 'home.service',[
-            'data' => $data,
-            'images' => $images
+        $category= Category::find($id);
+        $services = DB::table('services')->where('category_id' , $id)->get();
+        return view( 'home.categoryservices',[
+            'category' => $category,
+            'services' => $services
 
         ]);
 

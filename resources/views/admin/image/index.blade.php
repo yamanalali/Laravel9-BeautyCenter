@@ -46,15 +46,7 @@
                                     <input class="form-control" type="text" name="title" >
                                 </div>
                      </div>
-                <div class="form-group">
-                    <label>Custom file input</label>
-                    <div class="col-sm-12 col-md-12 col-form-label">
-                        <input type="file" class="custom-file-input" name="image" id="image" >
-                        <label class="custom-file-label"><b>Choose file</b></label>
-                        <button class="col-sm-12 col-md-12 col-form-label" type="submit" class="btn btn-primary">Save Image</button>
 
-                    </div>
-                </div>
                 <!-- table -->
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix mb-20">
