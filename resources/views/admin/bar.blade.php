@@ -36,7 +36,7 @@
                 <a href="/admin/faq/" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-help"></span><span class="mtext">FAQ</span>
                 </a>
-                <a href="/admin/massages/" class="dropdown-toggle no-arrow">
+                <a href="{{route('admin.message.index')}}" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-message-1"></span><span class="mtext">Massages</span>
                 </a>
                 <a href="/admin/user/" class="dropdown-toggle no-arrow">

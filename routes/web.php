@@ -33,6 +33,8 @@ Route::get('/', [\App\Http\Controllers\HomeController::class,'Index'])->name( na
 Route::get('/contact', [\App\Http\Controllers\HomeController::class,'contact'])->name( name: 'contact');
 Route::get('/about', [\App\Http\Controllers\HomeController::class,'about'])->name( name: 'about');
 Route::get('/reference', [\App\Http\Controllers\HomeController::class,'reference'])->name( name: 'reference');
+Route::post('/storemessage', [\App\Http\Controllers\HomeController::class,'storemessage'])->name( name: 'storemessage');
+
 
 
 
@@ -95,6 +97,14 @@ Route::prefix( 'admin')->name('admin.')->group(function () {
         Route::Post('/store/{sid}', action:'store')->name( name: 'store');
         Route::post('/update/{sid}/{id}', action:'update')->name( name: 'update');
         Route::get('/destroy/{sid}/{id}', action:'destroy')->name( name: 'destroy');
+
+    });
+    //*************** admin Message routs **********
+    Route::prefix( '/message')->name('message.')->controller(\App\Http\Controllers\Admin\MessageController::class)->group(function () {
+        Route::get('/', action:'index')->name( name: 'index');
+        Route::get('/show/{id}', action:'show')->name( name: 'show');
+        Route::post('/update/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
 
     });
 });
