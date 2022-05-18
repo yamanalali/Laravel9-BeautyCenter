@@ -3,13 +3,20 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Beauty Center</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
+    <title>@yield('title')</title>
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+    <meta name="author" content="Yaman alali">
+    <link rel="icon" type="image/x-icon" href="@yield('icon')"/>
+
+
+
     <!-- Favicon -->
-    <link href="{{asset("assets")}}/img/favicon.ico" rel="icon">
+    <link href="@yield('icon') rel="icon" >
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

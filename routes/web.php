@@ -28,6 +28,14 @@ Route::get('/welcome', function () {
 // 3- call controll function
 Route::get('/', [\App\Http\Controllers\HomeController::class,'Index'])->name( name: 'home');
 
+
+//*************** Home routes ***************
+Route::get('/contact', [\App\Http\Controllers\HomeController::class,'contact'])->name( name: 'contact');
+Route::get('/about', [\App\Http\Controllers\HomeController::class,'about'])->name( name: 'about');
+Route::get('/reference', [\App\Http\Controllers\HomeController::class,'reference'])->name( name: 'reference');
+
+
+
 // 4- route > controll > view
 Route::get('/test', [\App\Http\Controllers\HomeController::class,'test'])->name( name: 'test');
 
@@ -52,6 +60,11 @@ Route::middleware([
 //*************** admin panel routes ***************
 Route::prefix( 'admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class,'index'])->name('index');
+    //*************** General Routes routes **********
+    Route::get('/setting', [AdminHomeController::class,'setting'])->name('setting');
+    Route::post('/setting', [AdminHomeController::class,'settingUpdate'])->name('setting.update');
+
+
 //*************** admin Category routes **********
     Route::prefix( '/category')->name('category.')->controller(AdminCategoryController::class)->group(function () {
       Route::get('/', action:'index')->name( name: 'index');

@@ -48,7 +48,7 @@
 
                     <div class="dropdown-divider"></div>
                 </li>
-                <a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
+                <a href="{{route('admin.setting')}}" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-settings"></span>
                     <span class="mtext">Settings</span>
                 </a>

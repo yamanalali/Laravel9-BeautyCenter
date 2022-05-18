@@ -1,7 +1,10 @@
 
 @extends('layouts.FrontBase')
 
-@section('title', 'BeautyCenter - The Best in the World')
+@section('title', $setting->title)
+@section('description', $setting->description)
+@section('keywords', $setting->keywords)
+@section('icon',Storage::URL($setting->icon))
 
 @section('slider')
      @include('home.slider')
