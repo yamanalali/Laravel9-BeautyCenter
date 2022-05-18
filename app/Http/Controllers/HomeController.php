@@ -23,7 +23,7 @@ class HomeController extends Controller
    {
        $page='home';
 
-       $sliderdata=Service::limit(1)->get();
+       $sliderdata=Service::limit(3)->get();
        $servicelist1=Service::limit(8)->get();
        $setting= Setting::first();
 
