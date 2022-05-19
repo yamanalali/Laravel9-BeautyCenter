@@ -3,7 +3,7 @@
     <div class="row bg-secondary py-2 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center">
-                <a class="text-dark" href="">FAQs</a>
+                <a class="text-dark" href="{{route('faq')}}">FAQs</a>
                 <span class="text-muted px-2">|</span>
                 <a class="text-dark" href="">Help</a>
                 <span class="text-muted px-2">|</span>
@@ -82,6 +82,7 @@
                         <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                         <a href="{{route('about')}}" class="nav-item nav-link">About Us</a>
                         <a href="{{route('reference')}}" class="nav-item nav-link">Reference</a>
+                        <a href="{{route('faq')}}" class="nav-item nav-link">Faqs</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">

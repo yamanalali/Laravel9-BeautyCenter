@@ -34,6 +34,8 @@ Route::get('/contact', [\App\Http\Controllers\HomeController::class,'contact'])-
 Route::get('/about', [\App\Http\Controllers\HomeController::class,'about'])->name( name: 'about');
 Route::get('/reference', [\App\Http\Controllers\HomeController::class,'reference'])->name( name: 'reference');
 Route::post('/storemessage', [\App\Http\Controllers\HomeController::class,'storemessage'])->name( name: 'storemessage');
+Route::get('/faq', [\App\Http\Controllers\HomeController::class,'faq'])->name( name: 'faq');
+
 
 
 
@@ -105,6 +107,18 @@ Route::prefix( 'admin')->name('admin.')->group(function () {
         Route::get('/show/{id}', action:'show')->name( name: 'show');
         Route::post('/update/{id}', action:'update')->name( name: 'update');
         Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
+
+    });
+    //*************** admin Faq routes **********
+    Route::prefix( '/faq')->name('faq.')->controller(\App\Http\Controllers\Admin\FaqController::class)->group(function () {
+        Route::get('/', action:'index')->name( name: 'index');
+        Route::get('/create', action:'create')->name( name: 'create');
+        Route::Post('/store', action:'store')->name( name: 'store');
+        Route::get('/edit/{id}', action:'edit')->name( name: 'edit');
+        Route::post('/update/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
+        Route::get('/show/{id}', action:'show')->name( name: 'show');
+
 
     });
 });
