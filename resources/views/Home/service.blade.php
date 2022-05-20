@@ -49,17 +49,23 @@
 
             <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
-
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star-half-alt"></small>
-                    <small class="far fa-star"></small>
+                    @php
+                    $average=$data->comment->average('rate');
+                    @endphp
+                    <i class="fas fa-star @if($average<1) -0 empty @endif" ></i>
+                    <i class="fas fa-star @if($average<2) -0 empty @endif"></i>
+                    <i class="fas fa-star @if($average<3) -0 empty @endif"></i>
+                    <i class="fas fa-star @if($average<4) -0 empty @endif"></i>
+                    <i class="far fa-star @if($average<5) -0 empty @endif"></i>
                 </div>
-                <small class="pt-1">(50 Reviews)</small>
+                <small
+                  class ="pt-1"> {{$data->comment->count('id')}}
+                    {{number_format($average,1)}}
+                    Reviews  </small>
+
             </div>
             <h3 class="font-weight-semi-bold mb-4">{{$data->price}}$</h3>
-            <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
+            <p class="mb-4">{{$data->description}}</p>
             <div class="d-flex mb-3">
                 <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                 <form>
@@ -153,7 +159,7 @@
             <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                 <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
                 <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews ({{$data->comment->count('id')}} )</a>
             </div>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="tab-pane-1">
@@ -174,6 +180,7 @@
                                 <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                 <div class="media-body">
                                     <h6>{{$rs->user->name}}<small> - <i>{{$rs->created_at}}</i></small></h6>
+
                                     <div class="text-primary mb-2">
                                         <i class="fas fa-star @if($rs->rate<1) -0 empty @endif" ></i>
                                         <i class="fas fa-star @if($rs->rate<2) -0 empty @endif"></i>
@@ -220,14 +227,15 @@
                                     <label for="review">Your Review *</label>
                                     <textarea type="review" class="form-control" name="review"></textarea>
                                 </div>
-                                <div class="form-group mb-0">
-                                    <div class="form-group mb-0">
                                         @auth()
+
+                                    <div class="form-group mb-0">
                                             <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
                                         @else
-                                    </div>
                                     <a href="/login"  class="btn btn-primary px-3">For Submit Your Review, Please Login</a>
                                     @endauth
+                                    </div>
+
                                 </div>
                             </form>
                         </div>
