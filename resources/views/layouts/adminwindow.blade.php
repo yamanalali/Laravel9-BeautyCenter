@@ -3,7 +3,6 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title>Service Image Gallery</title>
     <title>@yield("title")</title>
 
     <!-- Mobile Specific Metas -->

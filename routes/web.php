@@ -35,6 +35,7 @@ Route::get('/about', [\App\Http\Controllers\HomeController::class,'about'])->nam
 Route::get('/reference', [\App\Http\Controllers\HomeController::class,'reference'])->name( name: 'reference');
 Route::post('/storemessage', [\App\Http\Controllers\HomeController::class,'storemessage'])->name( name: 'storemessage');
 Route::get('/faq', [\App\Http\Controllers\HomeController::class,'faq'])->name( name: 'faq');
+Route::post('/storecomment', [\App\Http\Controllers\HomeController::class,'storecomment'])->name( name: 'storecomment');
 
 
 
@@ -119,6 +120,14 @@ Route::prefix( 'admin')->name('admin.')->group(function () {
         Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
         Route::get('/show/{id}', action:'show')->name( name: 'show');
 
+
+    });
+    //*************** admin Comment routs **********
+    Route::prefix( '/comment')->name('comment.')->controller(\App\Http\Controllers\Admin\CommentController::class)->group(function () {
+        Route::get('/', action:'index')->name( name: 'index');
+        Route::get('/show/{id}', action:'show')->name( name: 'show');
+        Route::post('/update/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
 
     });
 });

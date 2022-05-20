@@ -13,4 +13,8 @@ class Service extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+    public function Comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
