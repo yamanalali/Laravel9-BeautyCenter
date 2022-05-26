@@ -48,18 +48,25 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-3 col-6 text-right">
-            <a href="" class="btn border">
-                <i class="fas fa-heart text-primary"></i>
-                <span class="badge">0</span>
+            @auth()
+        <div class="col-lg-3 col-6 text-center">
+
+            <a href="/" class="btn btn-primary">{{Auth::user()->name}}</a>
+            <a href="/logoutuser" class="btn border">Logout</a>
+            @endauth
+            @guest()
+            <a href="/loginuser" class="btn border">Login</a>
+
+                <a href="/registeruser" class="btn border">Register</a>
+                @endguest
             </a>
-            <a href="" class="btn border">
-                <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
+
         </div>
     </div>
+
 </div>
+</div>
+
 <!-- Topbar End -->
 <!-- Navbar Start -->
 <div class="container-fluid">
@@ -88,6 +95,7 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="cart.html" class="dropdown-item">Shopping Cart</a>
                                 <a href="checkout.html" class="dropdown-item">Checkout</a>
+
             </nav>
         </div>
     </div>

@@ -173,34 +173,37 @@
 
 
             <div class="tab-pane fade" id="tab-pane-3">
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="media mb-4">
-                                @foreach($reviews as $rs)
-                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+
                                 <div class="media-body">
+                                    @foreach($reviews as $rs)
+
                                     <h6>{{$rs->user->name}}<small> - <i>{{$rs->created_at}}</i></small></h6>
 
                                     <div class="text-primary mb-2">
-                                        <i class="fas fa-star @if($rs->rate<1) -0 empty @endif" ></i>
-                                        <i class="fas fa-star @if($rs->rate<2) -0 empty @endif"></i>
-                                        <i class="fas fa-star @if($rs->rate<3) -0 empty @endif"></i>
-                                        <i class="fas fa-star @if($rs->rate<4) -0 empty @endif"></i>
+                                        <i class="far fa-star @if($rs->rate<1) -0 empty @endif" ></i>
+                                        <i class="far fa-star @if($rs->rate<2) -0 empty @endif"></i>
+                                        <i class="far fa-star @if($rs->rate<3) -0 empty @endif"></i>
+                                        <i class="far fa-star @if($rs->rate<4) -0 empty @endif"></i>
                                         <i class="far fa-star @if($rs->rate<5) -0 empty @endif"></i>
                                     </div>
                                     <strong>{{$rs->subject}}</strong>
                                     <p>{{$rs->review}}</p>
-                                </div>
-                        @endforeach
+                                    @endforeach
 
-                <div class="col-lg-7 pb-5">
-                    <div class="fa-pull-right"
-                                <form class="review-form" action="{{route('storecomment')}}" method="post">
+                                </div>
+
+                                    <div class="col-md-6">
+                                        <h4 class="mb-4">Leave a review</h4>
+                                        <div class="rating">
+                                            <small>Your email address will not be published. Required fields are marked *</small>
+                                            <div class="d-flex my-3">
+                                <form class="review-form" action="{{route('storecomment')}}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <h4 class="mb-4">Leave a review</h4>
-                                    <div class="rating">
-                                        <small>Your email address will not be published. Required fields are marked *</small>
-                                        <div class="d-flex my-3">
+
                                             <p class="mb-0 mr-2">Your Rating * :</p>
                                             <div class="rate">
                                                 <input type="radio" id="star5" name="rate" value="5" />
@@ -225,17 +228,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="review">Your Review *</label>
-                                    <textarea type="review" class="form-control" name="review"></textarea>
+                                    <textarea type="text" minlength="146" class="form-control" name="review">
+                                    </textarea>
                                 </div>
                                         @auth()
 
-                                    <div class="form-group mb-0">
-                                            <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                                    <div class="form-control">
+                                            <input id="button" type="submit" value="Leave Your Review" class="btn btn-primary px-3">
                                         @else
                                     <a href="/login"  class="btn btn-primary px-3">For Submit Your Review, Please Login</a>
-                                    @endauth
+                                        @endauth
+
                                     </div>
 
+
+                                            </div>
                                 </div>
                             </form>
                         </div>
