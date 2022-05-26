@@ -146,22 +146,23 @@ class HomeController extends Controller
 
     }
 
-
-
-   public function test()
-   {
-        return view( view: 'home.test');
-   }
-
-   public function param($id,$number)
-   {
-      echo "paramater 1:", $id;
-      echo "<br>Paramater 2:", $number;
-   }
-
-   public function save()
-
+    public function loginadmincheck(Request $request)
     {
-        echo "Save Function";
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/admin');
+        }
+
+        return back()->withErrors([
+            'error' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 }
+
+
