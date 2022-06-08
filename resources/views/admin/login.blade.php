@@ -75,6 +75,8 @@
                                 </label>
                             </div>
                         </div>
+                        @include('home.message')
+
                         <div class="input-group custom">
                             <input type="text" name="email" class="form-control form-control-lg" placeholder="Email">
                             <div class="input-group-append custom">

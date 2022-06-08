@@ -36,10 +36,10 @@ Route::get('/reference', [\App\Http\Controllers\HomeController::class,'reference
 Route::post('/storemessage', [\App\Http\Controllers\HomeController::class,'storemessage'])->name( name: 'storemessage');
 Route::get('/faq', [\App\Http\Controllers\HomeController::class,'faq'])->name( name: 'faq');
 Route::post('/storecomment', [\App\Http\Controllers\HomeController::class,'storecomment'])->name( name: 'storecomment');
-Route::view('/loginuser',  'home.login');
-Route::view('/registeruser',  'home.register');
+Route::view('/loginuser',  'home.login')->name( name: 'loginuser');
+Route::view('/registeruser',  'home.register')->name( name: 'registeruser');
 Route::get('/logoutuser',  [\App\Http\Controllers\HomeController::class,'logout'])->name( name: 'logoutuser');
-Route::view('/loginadmin',  'admin.login');
+Route::view('/loginadmin',  'admin.login')->name( name: 'loginadmin');
 Route::post('/loginadmincheck',  [\App\Http\Controllers\HomeController::class,'loginadmincheck'])->name( name: 'loginadmincheck');
 
 
@@ -68,7 +68,7 @@ Route::middleware([
 });
 
 //*************** admin panel routes ***************
-Route::prefix( 'admin')->name('admin.')->group(function () {
+Route::middleware('admin')->prefix( 'admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class,'index'])->name('index');
     //*************** General Routes routes **********
     Route::get('/setting', [AdminHomeController::class,'setting'])->name('setting');
