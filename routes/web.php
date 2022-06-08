@@ -135,5 +135,17 @@ Route::prefix( 'admin')->name('admin.')->group(function () {
         Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
 
     });
+    //*************** admin Users routs **********
+    Route::prefix( '/user')->name('user.')->controller(\App\Http\Controllers\Admin\AdminUserController::class)->group(function () {
+        Route::get('/', action:'index')->name( name: 'index');
+        Route::get('/show/{id}', action:'show')->name( name: 'show');
+        Route::get('/edit/{id}', action:'edit')->name( name: 'edit');
+        Route::post('/update/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
+        Route::post('/addrole/{id}', action:'addrole')->name( name: 'addrole');
+        Route::get('/destroyrole/{uid}/{rid}', action:'destroyrole')->name( name: 'destroyrole');
+
+
+    });
 });
 

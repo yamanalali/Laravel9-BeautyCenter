@@ -24,10 +24,10 @@
                         <li><a href="index3.html">Completed Appointment</a></li>
                     </ul>
                 </li>
-                <a href="/admin/category/" class="dropdown-toggle no-arrow">
+                <a href="/admin/category" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-calendar1"></span><span class="mtext">Categories</span>
                 </a>
-                <a href="/admin/service/" class="dropdown-toggle no-arrow">
+                <a href="/admin/service" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-house-11"></span><span class="mtext">Services</span>
                 </a>
                 <a href="{{route('admin.comment.index')}}" class="dropdown-toggle no-arrow">
@@ -39,10 +39,10 @@
                 <a href="{{route('admin.message.index')}}" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-message-1"></span><span class="mtext">Massages</span>
                 </a>
-                <a href="/admin/user/" class="dropdown-toggle no-arrow">
+                <a href="/admin/user" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-user-13"></span><span class="mtext">User</span>
                 </a>
-                <a href="/admin/social/" class="dropdown-toggle no-arrow">
+                <a href="/admin/social" class="dropdown-toggle no-arrow">
                     <span class="micon dw dw-chat-3"></span><span class="mtext">Social</span>
                 </a>
 
