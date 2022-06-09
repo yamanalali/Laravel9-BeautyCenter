@@ -66,6 +66,16 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+//*************** admin Auth control ***************
+
+Route::middleware('auth')->group(function (){
+    //*************** admin Auth control ***************
+
+
+    Route::prefix( 'userpanel')->name('userpanel.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\UserController::class,'index'])->name('index');
+
+    });
 
 //*************** admin panel routes ***************
 Route::middleware('admin')->prefix( 'admin')->name('admin.')->group(function () {
@@ -148,4 +158,4 @@ Route::middleware('admin')->prefix( 'admin')->name('admin.')->group(function () 
 
     });
 });
-
+});

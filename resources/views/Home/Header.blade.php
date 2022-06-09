@@ -51,7 +51,7 @@
             @auth()
         <div class="col-lg-3 col-6 text-center">
 
-            <a href="/" class="btn btn-primary">{{Auth::user()->name}}</a>
+            <a href="{{route('userpanel.index')}}" class="btn btn-primary">{{Auth::user()->name}}</a>
             <a href="/logoutuser" class="btn border">Logout</a>
             @endauth
             @guest()
