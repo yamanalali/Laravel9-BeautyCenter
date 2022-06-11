@@ -69,11 +69,13 @@ Route::middleware([
 //*************** admin Auth control ***************
 
 Route::middleware('auth')->group(function (){
-    //*************** admin Auth control ***************
+    //***************  userpanel control ***************
 
 
     Route::prefix( 'userpanel')->name('userpanel.')->group(function () {
         Route::get('/', [\App\Http\Controllers\UserController::class,'index'])->name('index');
+        Route::get('/reviews', [\App\Http\Controllers\UserController::class,'reviews'])->name('reviews');
+        Route::get('/reviewsdestroy/{id}', [\App\Http\Controllers\UserController::class,'reviewsdestroy'])->name('reviewsdestroy');
 
     });
 
