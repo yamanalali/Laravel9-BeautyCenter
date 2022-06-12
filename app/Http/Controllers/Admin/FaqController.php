@@ -15,7 +15,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+       //
         $data= Faq::all();
         return view(  'admin.faq.index',[ "data" => $data ]);
     }

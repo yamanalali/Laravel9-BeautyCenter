@@ -50,6 +50,7 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Service</th>
                         <th scope="col">Name</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Review</th>
@@ -63,6 +64,9 @@
                     @foreach($data as $rs)
                     <tr>
                         <td>{{$rs->id}}</td>
+                        <td> <a href="{{route('service',['id'=>$rs->service_id])}}">
+                                {{$rs->service->title}} </a>
+                        </td>
                         <td>{{$rs->user->name}}</td>
                         <td>{{$rs->subject}}</td>
                         <td>{{$rs->review}}</td>
@@ -84,7 +88,7 @@
                 <div class="collapse collapse-box" id="basic-table">
                     <div class="code-box">
                         <div class="clearfix">
-                            <a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+                            <a href="javascript:" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
                             <a href="#basic-table" class="btn btn-primary btn-sm pull-right" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
                         </div>
                         <pre><code class="xml copy-pre hljs" id="basic-table-code">

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
-use App\Models\RoleUsers;
-use App\Models\User;
+use App\Models\Appoiment;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
-class AdminUserController extends Controller
+class AppoimentController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +17,10 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-
-        $data= User::all();
+        //
+        $data= Appoiment::all();
         return view ( 'admin.appoiment.index', [
-            "data" => $data
+            "data" => $data,
         ]);
     }
 
@@ -31,7 +31,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -42,7 +42,8 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
     }
 
     /**
@@ -54,31 +55,11 @@ class AdminUserController extends Controller
     public function show($id)
     {
         //
-        $data = User::find($id);
-        $roles = Role::all();
-        return view ( 'admin.user.show', [
-            "data" => $data,
-            "roles" => $roles,
-        ]);
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function addrole(Request $request, $id)
-    {
-        //
-        $data = new RoleUsers();
-        $data->user_id = $id;
-        $data->role_id = $request->role_id;
+        $data = Appoiment::find($id);
         $data->save();
-        return redirect(route('admin.user.show',["id"=>$id])
-        );
+        return view(  'admin.appoiment.show',[
+            "data" => $data
+        ]);
     }
 
     /**
@@ -103,6 +84,12 @@ class AdminUserController extends Controller
     {
         //
 
+        $data = Appoiment::find($id);
+        $data->note=$request->note;
+        $data->status=$request->status;
+        $data->save();
+        return redirect(route('admin.appoiment.show',[$id=>$id])
+        );
     }
 
     /**
@@ -114,19 +101,9 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         //
-    }
+        $data= Appoiment::find($id);
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroyrole($uid,$rid)
-    {
-        $user= User::find($uid);
-        $user->role()->detach($rid);
-        return redirect(route('admin.user.show', ['id'=>$uid]));
+        $data->delete();
+        return redirect(to:'admin/appoiment');
     }
 }

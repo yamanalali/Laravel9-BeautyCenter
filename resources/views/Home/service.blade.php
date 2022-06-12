@@ -5,12 +5,10 @@
 
 
     <link rel="stylesheet" type="text/css" href="{{asset("assets")}}/css/stars.css">
-
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">{{$data->id}}</h1>
-                <p class="m-0"><a href="">{{$data->category->title}}</a></p>
+            <h1 class="font-weight-semi-bold text-uppercase mb-3"><a href="">{{$data->category->title}}</a></h1>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Service Detail</p>
             </div>
@@ -24,12 +22,12 @@
         <div class="col-lg-5 pb-5">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
-                    <div class="carousel-item active">
-                        <img class="w-100 h-100" src="{{Storage::URL($data->image)}}" alt="Image" >
+                    <div class="carousel-item active" style="height: 360px;width: 680px">
+                        <img class="w-100 h-100" src="{{Storage::URL($data->image)}}" alt="Image" style="height: 400px;width: 400px">
                     </div>
                     @foreach($images as $rs)
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="{{Storage::URL($rs->image)}}" alt="Image">
+                        <div class="carousel-item" style="height: 360px;width: 680px">
+                            <img class="w-100 h-100" src="{{Storage::URL($rs->image)}}" alt="Image" style="height: 400px;width: 400px">
                         </div>
                     @endforeach
                 </div>
@@ -157,14 +155,45 @@
     <div class="row px-xl-5">
         <div class="col">
             <div class="nav nav-tabs justify-content-center border-secondary mb-4">
-                <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
+                <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Appointment</a>
                 <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a>
                 <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews ({{$data->comment->count('id')}} )</a>
             </div>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="tab-pane-1">
-                    <h4 class="mb-3">Product Description</h4>
-                 <p>{{$data->description}}</p>
+                    <form action="{{route('storeappoiment')}}" novalidate="novalidate" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="service_id"></label>
+                            <input type="hidden" class="form-control" name="service_id" value="{{$data->id}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="price" value="{{$data->price}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="date" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                        <input type="time" id="appt" name="time"
+                               min="09:00" max="18:00" required>
+                        </div>
+                        <label for="payment">Choose a payment method:</label>
+                        <select name="payment" id="payment">
+                            <option value="Nakit">Nakit</option>
+                            <option value="Kredi Kart">Kredi Kart</option>
+                        </select>
+
+
+                        <div>
+                            @auth()
+                                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
+                                    Message</button>
+                            @else
+                                <a href="/login"  class="btn btn-primary px-3">To make an Appoiment, Please Login</a>
+                            @endauth
+
+                        </div>
                 </div>
                 <div class="tab-pane fade" id="tab-pane-2">
                     <h4 class="mb-3"> Detail</h4>
@@ -241,8 +270,6 @@
 
                                     </div>
 
-
-                                            </div>
                                 </div>
                             </form>
                         </div>
@@ -254,5 +281,4 @@
 </div>
     </div>
     <!-- Products End -->
-
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appoiment;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Faq;
@@ -120,6 +121,16 @@ class HomeController extends Controller
             "datalist" => $datalist
         ]);
     }
+    public function appoiment()
+
+    {
+        $setting= Appoiment::first();
+        $datalist= Appoiment::all();
+        return view( 'home.appoiment',[
+            "setting" => $setting ,
+            "datalist" => $datalist
+        ]);
+    }
     public function storecomment(Request $request)
 
     {
@@ -135,7 +146,22 @@ class HomeController extends Controller
 
     }
 
+    public function storeappoiment(Request $request)
 
+    {
+        $data= new Appoiment();
+        $data->user_id = Auth::id();
+        $data->service_id = $request->input('service_id');
+        $data->date = $request->input('date');
+        $data->time = $request->input('time');
+        $data->price = $request->input('price');
+        $data->time = $request->input('time');
+        $data->payment = $request->input('payment');
+        $data->ip=request()->ip();
+        $data->save();
+        return redirect()->route('service',['id'=>$request->input('service_id')])->with('success','Your Appoiment has been Saved , Thank you.');
+
+    }
 
     public function logout(Request $request)
     {

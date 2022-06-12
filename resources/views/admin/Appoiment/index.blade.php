@@ -2,7 +2,7 @@
 
 @extends('layouts.adminbase')
 
-@section('title', 'BeautyCenter - Category List')
+@section('title', 'BeautyCenter - Appointment List')
 
 
 
@@ -24,14 +24,12 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">blank</li>
+                                <li class="breadcrumb-item active" aria-current="page">Appointment</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-outline-primary" href="{{route('admin.category.create')}}" role="button" >Add Category</a>
-
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#">Export List</a>
                                 <a class="dropdown-item" href="#">Policies</a>
@@ -52,11 +50,12 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Parent</th>
-                        <th scope="col">title</th>
-                        <th scope="col">image</th>
-                        <th scope="col">status</th>
-                        <th style="width: 40px">Edit</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
                         <th style="width: 40px">Delete</th>
                         <th style="width: 40px">Show</th>
                     </tr>
@@ -65,17 +64,16 @@
                     @foreach($data as $rs)
                     <tr>
                         <td>{{$rs->id}}</td>
-                      <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</td>
-                        <td>{{$rs->title}}</td>
-                        <td>
-                        @IF   ($rs->image)
-                            <img src="{{Storage::URL($rs->image)}}" style="height: 40px">
-                            @endif
-                        </td>
+                        <td>{{$rs->user->name}}</td>
+                        <td>{{$rs->service_id}}</td>
+                        <td>{{$rs->date}}</td>
+                        <td>{{$rs->time}}</td>
+                        <td>{{$rs->price}}</td>
                         <td>{{$rs->status}}</td>
-                        <td><a href={{route('admin.category.edit',['id'=>$rs->id ])}} class="btn btn-danger" >Edit</td>
-                        <td><a href={{route('admin.category.destroy',['id'=>$rs->id ])}} class="btn btn-success" >Delete </a> </td>
-                        <td><a href={{route('admin.category.show',['id'=>$rs->id ])}} class="btn btn-warning" >Show</a> </td>
+                        <td><a href={{route('admin.appoiment.destroy',['id'=>$rs->id ])}} class="btn btn-success"
+                            onclick="return confirm('Deleting !! Are You Sure ?')" >Delete </a> </td>
+                        <td><a href={{route('admin.appoiment.show',['id'=>$rs->id ])}} class="btn btn-warning"
+                            onclick="return !window.open(this.href, '','top=50 left')">Show</a> </td>
                     </tr>
                     @endforeach
                     </tbody>

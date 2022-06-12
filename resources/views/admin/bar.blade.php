@@ -19,9 +19,8 @@
                         <span class="micon dw dw-wall-clock "></span><span class="mtext " >Appointment</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="index.html">New Appointment</a></li>
-                        <li><a href="index2.html">Accepted Appointment</a></li>
-                        <li><a href="index3.html">Completed Appointment</a></li>
+                        <li><a href="{{route('admin.appoiment.index')}}">New Appointment</a></li>
+                        <li><a href="">Accepted Appointment</a></li>
                     </ul>
                 </li>
                 <a href="/admin/category" class="dropdown-toggle no-arrow">

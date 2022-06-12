@@ -41,6 +41,8 @@ Route::view('/registeruser',  'home.register')->name( name: 'registeruser');
 Route::get('/logoutuser',  [\App\Http\Controllers\HomeController::class,'logout'])->name( name: 'logoutuser');
 Route::view('/loginadmin',  'admin.login')->name( name: 'loginadmin');
 Route::post('/loginadmincheck',  [\App\Http\Controllers\HomeController::class,'loginadmincheck'])->name( name: 'loginadmincheck');
+Route::get('/appoiment', [\App\Http\Controllers\HomeController::class,'appoiment'])->name( name: 'appoiment');
+Route::post('/storeappoiment', [\App\Http\Controllers\HomeController::class,'storeappoiment'])->name( name: 'storeappoiment');
 
 
 
@@ -76,6 +78,8 @@ Route::middleware('auth')->group(function (){
         Route::get('/', [\App\Http\Controllers\UserController::class,'index'])->name('index');
         Route::get('/reviews', [\App\Http\Controllers\UserController::class,'reviews'])->name('reviews');
         Route::get('/reviewsdestroy/{id}', [\App\Http\Controllers\UserController::class,'reviewsdestroy'])->name('reviewsdestroy');
+        Route::get('/appoiment', [\App\Http\Controllers\UserController::class,'appoiment'])->name('appoiment');
+        Route::get('/appoimentdestroy/{id}', [\App\Http\Controllers\UserController::class,'appoimentdestroy'])->name('appoimentdestroy');
 
     });
 
@@ -127,6 +131,16 @@ Route::middleware('admin')->prefix( 'admin')->name('admin.')->group(function () 
         Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
 
     });
+    //*************** admin appoiment routs **********
+    Route::prefix( '/appoiment')->name('appoiment.')->controller(\App\Http\Controllers\Admin\AppoimentController::class)->group(function () {
+        Route::get('/', action:'index')->name( name: 'index');
+        Route::get('/show/{id}', action:'show')->name( name: 'show');
+        Route::post('/update/{id}', action:'update')->name( name: 'update');
+        Route::get('/destroy/{id}', action:'destroy')->name( name: 'destroy');
+
+    });
+
+
     //*************** admin Faq routes **********
     Route::prefix( '/faq')->name('faq.')->controller(\App\Http\Controllers\Admin\FaqController::class)->group(function () {
         Route::get('/', action:'index')->name( name: 'index');

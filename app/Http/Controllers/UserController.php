@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appoiment;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,14 @@ class UserController extends Controller
 
     }
 
+    public function appoiment()
+    {
+        $appoiments=Appoiment::where('user_id', '=', Auth::id())->get();
+        return view('home.user.appoiment',[
+            'appoiments'=>$appoiments
+        ]);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -100,5 +109,12 @@ class UserController extends Controller
         $data= Comment::find($id);
         $data->delete();
         return redirect(route('userpanel.reviews'));
+    }
+    public function appoimentdestroy ($id)
+    {
+        //
+        $data= Appoiment::find($id);
+        $data->delete();
+        return redirect(route('userpanel.appoiment'));
     }
 }
