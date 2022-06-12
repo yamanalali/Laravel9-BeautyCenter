@@ -34,55 +34,61 @@
                                     {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
                                 @endforeach
                             </select>
-
-                            <div class="form-group row">
-                                <label for="title" class="col-sm-12 col-md-12 col-form-label"><b>Text</b></label>
-                                <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="title" value="{{$data->title}}" placeholder="title">
-                                </div>
                             </div>
+
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-12 col-md-12 col-form-label"><b>Title</b></label>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input class="form-control" type="text" name="title" value="{{$data->title}}">
+                                    </div>
+                                </div>
                             <div class="form-group row">
                                 <label for="description" class="col-sm-12 col-md-12 col-form-label"><b>description</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="description" value="{{$data->description}}"description">
+                                    <input class="form-control" type="text" name="description" value="{{$data->description}}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="keywords" class="col-sm-12 col-md-12 col-form-label"><b>keywords</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="keywords" value="{{$data->keywords}}"keywords">
+                                    <input class="form-control" type="text" name="keywords" value="{{$data->keywords}}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="price" class="col-sm-12 col-md-12 col-form-label"><b>price</b></label>
 
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="price" >
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="type" class="col-sm-12 col-md-12 col-form-label"><b>type</b></label>
-                                <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="type" value="{{$data->type}}"type">
+                                    <input class="form-control" type="text" name="price" value="{{$data->price}}" >
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="type" class="col-sm-12 col-md-12"><b>Type</b></label>
+                                <select class="selectpicker form-control" data-style="btn-outline-primary"  name="type" >
+                                    <option>{{$data->type}}</option>
+                                    <option value="New">New Talent</option>
+                                    <option value="Junior">Junior Stylist</option>
+                                    <option value="Advanced">Advanced Stylist</option>
+                                    <option value="Senior">Senior Stylist</option>
+                                    <option value="Master">Master Stylist</option>
+                                </select>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="sessions" class="col-sm-12 col-md-12 col-form-label"><b>sessions</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="sessions" value="{{$data->sessions}}"sessions">
+                                    <input class="form-control" type="text" name="sessions" value="{{$data->sessions}}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="tax" class="col-sm-12 col-md-12 col-form-label"><b>tax %</b></label>
                                 <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="tax" value="{{$data->tax}}"tax">
+                                    <input class="form-control" type="text" name="tax" value="{{$data->tax}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="detail" >detail</label>
-                                <textarea class="form-control" name="detail" value="{{$data->detail}}"detail"></textarea>
+                                <textarea class="form-control" name="detail">{{$data->detail}}</textarea>
                             </div>
 
 
@@ -93,7 +99,7 @@
                                     <label class="custom-file-label"><b>Choose file</b></label>
                                 </div>
                             </div>
-                            <div
+                            <div>
                             </div>
                              <div>
                                 <label for="status"  class="col-sm-12 col-md-12"><b>Status</b></label>
@@ -106,6 +112,7 @@
                                 <button type="submit" class="btn btn-primary">Edit Data</button>
 
                             </div>
+                            </div>
                         </form>
 
 </form>
@@ -117,3 +124,4 @@
                         <!-- horizontal Basic Forms End -->
 
 
+        </div> </div> </div>

@@ -119,6 +119,7 @@ class ServiceController extends Controller
         $data= Service::find($id);
         $data->category_id = $request->category_id;
         $data->user_id = 0;  // $request->user_id;
+        $data->title = $request->title;
         $data->description = $request->description;
         $data->keywords = $request->keywords;
         $data->detail = $request->detail;

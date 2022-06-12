@@ -62,7 +62,7 @@
                     Reviews  </small>
 
             </div>
-            <h3 class="font-weight-semi-bold mb-4">{{$data->price}}$</h3>
+            <h3 class="font-weight-semi-bold mb-4">{{$data->price * $data->sessions+ $data->price * $data->tax}}$</h3>
             <p class="mb-4">{{$data->description}}</p>
             <div class="d-flex mb-3">
                 <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>

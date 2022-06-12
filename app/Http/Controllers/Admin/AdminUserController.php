@@ -19,7 +19,7 @@ class AdminUserController extends Controller
     {
 
         $data= User::all();
-        return view ( 'admin.appoiment.index', [
+        return view ( 'admin.user.index', [
             "data" => $data
         ]);
     }

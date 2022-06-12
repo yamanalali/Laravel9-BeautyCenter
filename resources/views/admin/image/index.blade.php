@@ -46,7 +46,12 @@
                                     <input class="form-control" type="text" name="title" >
                                 </div>
                      </div>
-
+                    <div class="form-group">
+                        <label>Example file input</label>
+                        <input name="image" type="file" class="form-control-file form-control height-auto">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Data</button>
+                </form>
                 <!-- table -->
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix mb-20">
@@ -75,7 +80,6 @@
                                         <img src="{{Storage::URL($rs->image)}}" style="height: 40px">
                                     @endif
                                 </td>
-                                <td><a href={{route('admin.image.update',['sid'=>$Service->id, 'id'=>$rs->id ])}} class="btn btn-danger" >Edit</td>
                                 <td><a href={{route('admin.image.destroy',['sid'=>$Service->id ,'id'=>$rs->id])}} class="btn btn-success" >Delete </a> </td>
 
                             </tr>

@@ -36,7 +36,7 @@
 
 
                             <div class="form-group row">
-                                <label for="title" class="col-sm-12 col-md-12 col-form-label"><b>Text</b></label>
+                                <label for="title" class="col-sm-12 col-md-12 col-form-label"><b>Title</b></label>
                                 <div class="col-sm-12 col-md-12">
                                     <input class="form-control" type="text" name="title" >
                                 </div>
@@ -60,10 +60,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="type" class="col-sm-12 col-md-12 col-form-label"><b>type</b></label>
-                                <div class="col-sm-12 col-md-12">
-                                    <input class="form-control" type="text" name="type" >
-                                </div>
+                                <label for="type" class="col-sm-12 col-md-12"><b>Type</b></label>
+                                <select class="selectpicker form-control" data-style="btn-outline-primary"  name="type" >
+                                    <option value="New">New Talent</option>
+                                    <option value="Junior">Junior Stylist</option>
+                                    <option value="Advanced">Advanced Stylist</option>
+                                    <option value="Senior">Senior Stylist</option>
+                                    <option value="Master">Master Stylist</option>
+                                </select>
                             </div>
                             <div class="form-group row">
                                 <label for="sessions" class="col-sm-12 col-md-12 col-form-label"><b>sessions</b></label>

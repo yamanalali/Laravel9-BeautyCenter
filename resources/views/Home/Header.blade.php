@@ -12,21 +12,7 @@
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="text-dark pl-2" href="">
-                    <i class="fab fa-youtube"></i>
-                </a>
+
             </div>
         </div>
     </div>
@@ -39,7 +25,7 @@
         <div class="col-lg-6 col-6 text-left">
             <form action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="search" class="form-control" placeholder="Search for products">
                     <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -84,7 +70,6 @@
                             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div class="navbar-nav mr-auto py-0">
                                     <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
-                                    <a href="{{route('appoiment')}}" class="nav-item nav-link">Appoiment</a>
                                     <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                                     <a href="{{route('about')}}" class="nav-item nav-link">About Us</a>
                                     <a href="{{route('reference')}}" class="nav-item nav-link">Reference</a>
